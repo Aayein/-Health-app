@@ -1,0 +1,137 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.9); /* readable over animation */
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  position: relative;
+  z-index: 10; /* above Vanta */
+  margin-top: 120px;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  /* min-height: auto; */
+}
+
+h1 { margin: 0 0 16px; }
+form label { display: block; margin-top: 12px; font-weight: 600; }
+input, textarea, button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #e2e6f0;
+  outline: none;
+  font-size: 15px;
+}
+textarea { resize: vertical; }
+button {
+  margin-top: 16px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease;
+}
+
+
+button:active { transform: translateY(1px); }
+#result { margin-top: 18px; padding: 14px; border-radius: 12px; background: #f1f5f9; }
+.hidden { display: none; }
+
+footer {
+  margin-top: 16px;
+  text-align: center;
+  color: #6b7280;
+  position: relative;
+  z-index: 1;
+}
+
+/* Vanta canvas behind everything */
+#vanta-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed; /* covers full screen even if page scrolls */
+  top: 0;
+  left: 0;
+  z-index: 1;
+  
+}
+
+#vanta-form-bg {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  min-height: 350px; /* ensures space for animation */
+  color: rgb(73, 6, 6); /* make form text readable */
+  background: transparent; /* Vanta will render here */
+  overflow: hidden; /* keeps animation inside */
+}
+
+#vanta-form-bg form {
+  position: relative;
+  z-index: 2;/* keep inputs above animation  */
+}
+
+.navbar {
+  display: flex;
+  justify-content:flex-start; /* moves links to right */
+  align-items: center;
+  background-color:rgba(0, 0, 0, 0.4); /* teal */
+  padding:6px 50px;
+  position: fixed; /* always at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8;/*  above background */
+  backdrop-filter: blur(6px);
+  height: 70px;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+
+.navbar img{
+  height:35px ;
+  width: 35px;
+  padding: 10px 20px 10px 5px;
+}
+     .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: background 0.3s;
+      border-radius: 6px;
+    }
+    .navbar a:hover {
+      background-color: #006666;
+      
+    }
+    .navbar img{
+        height:60px ;
+        width: 65px;
+        padding: 2px 20px 5px 2px;
+    }
+    #vanta-bg canvas {
+     pointer-events: none !important;
+    }
+     
+    

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Welcome Animation</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    /* background:#fff; */
+    background:url("stethoscope_white_bg.png")  no-repeat center center;
+    background-size:contain;
+    background-color:white;
+    overflow:hidden;
+    font-family:system-ui, sans-serif;
+    flex-direction:column;
+  }
+
+  /* WELCOME text */
+  #welcome{
+    font-size:4rem;
+    font-weight:bold;
+    color:#000;
+    display:flex;
+    gap:0.3em;
+  }
+  #welcome span{
+    display:inline-block;
+    opacity:1;
+    transform:translateY(0);
+    transition:transform 0.6s ease, opacity 0.6s ease;
+  }
+  #welcome span.bounce{
+    animation:bounce 0.6s ease;
+  }
+  #welcome span.drop{
+    transform:translateY(150%);
+    opacity:0;
+  }
+  @keyframes bounce{
+    0%{transform:translateY(0);}
+    30%{transform:translateY(-25%);}
+    60%{transform:translateY(0);}
+    80%{transform:translateY(-10%);}
+    100%{transform:translateY(0);}
+  }
+
+  /* Background transition */
+  .to-black{
+   animation: bgToBlack 2s forwards;
+  }
+  @keyframes bgToBlack{
+    /* 0%{background:#fff;} */
+    100%{background:#000;}
+  }
+
+  /* Quotes */
+  .quote{
+    margin-top:2rem;
+    font-size:1.8rem;
+    color:#e6e6e6;
+    white-space:pre;
+    border-right:2px solid #e6e6e6;
+    width:0;
+    overflow:hidden;
+    opacity:0;
+    text-align:center;
+  }
+  .quote.show{
+    opacity:1;
+    animation:typewriter 4s steps(40) forwards, blink 0.4s step-end infinite;
+  }
+  @keyframes typewriter{
+    from{width:0}
+    to{width:20ch;}
+  }
+  @keyframes blink{
+    50%{border-color:transparent}
+  }
+
+  /* Button Style from Uiverse.io */
+  #redirectBtn{
+    position:fixed;
+    bottom:2%;
+    opacity:0;
+    color: purple;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid purple;
+    padding: 15px 25px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+    background: transparent;
+    border-radius:50px;
+    transition: all 1s;
+    overflow: hidden;
+  }
+
+  #redirectBtn.show{
+    opacity:1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  #redirectBtn:hover {
+    color: white;
+  }
+
+  #redirectBtn::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    left: -40px;
+    transform: skewX(45deg);
+    background-color: purple;
+    z-index: -1;
+    transition: all 1s;
+    border-radius:50px;
+  }
+
+  #redirectBtn:hover::before {
+    width: 160%;
+  }
+</style>
+</head>
+<body>
+  <div id="welcome"></div>
+  <div id="quote1" class="quote">We pray for your Health.</div>
+  <div id="quote2" class="quote">So Here We Are.</div>
+  <button id="redirectBtn">Continue</button>
+
+<script>
+  const welcomeText = "WELCOME";
+  const welcomeEl = document.getElementById('welcome');
+  const quote1El = document.getElementById('quote1');
+  const quote2El = document.getElementById('quote2');
+  const btn = document.getElementById('redirectBtn');
+
+  // Split WELCOME into spans
+  welcomeText.split('').forEach((ch,i)=>{
+    const span=document.createElement('span');
+    span.textContent=ch;
+    welcomeEl.appendChild(span);
+  });
+
+  // Start sequence after 3s
+  setTimeout(()=>{
+    [...welcomeEl.children].forEach((span,i)=>{
+      setTimeout(()=>{
+        span.classList.add('bounce');
+        setTimeout(()=> span.classList.add('drop'), 600);
+      }, i*400);
+    });
+  },3000);
+
+  // After all letters dropped → bg transition
+  setTimeout(()=>{
+    document.body.classList.add('to-black');
+  },3000 + welcomeText.length*400 + 800);
+
+  // Show first quote
+  setTimeout(()=>{
+    quote1El.classList.add('show');
+  },3000 + welcomeText.length*400 + 3000);
+
+  // Show second quote after 2s of first
+  setTimeout(()=>{
+    quote1El.style.borderRight = 'none';
+    quote2El.classList.add('show');
+  },3000 + welcomeText.length*400 + 5000);
+
+  // Drop last full stop of second quote and then show button
+  setTimeout(()=>{
+    quote2El.style.borderRight = 'none';
+    const text = quote2El.textContent;
+    if(text.endsWith('.')){
+      quote2El.textContent = text.slice(0, -1);
+      const dot = document.createElement('span');
+      dot.textContent = '.';
+      dot.style.display = 'inline-block';
+      quote2El.appendChild(dot);
+
+      setTimeout(()=>{
+        dot.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+        dot.style.transform = 'translateY(150%)';
+        dot.style.opacity = '0';
+        setTimeout(()=>{
+          dot.remove();
+          btn.classList.add('show');
+        },800);
+      },500);
+    } else {
+      btn.classList.add('show');
+    }
+  },3000 + welcomeText.length*400 + 10000);
+
+  // Button redirect (change URL here)
+  btn.addEventListener('click',()=>{
+    window.location.href = "index.html"; // replace with your page
+  });
+</script>
+</body>
+</html>

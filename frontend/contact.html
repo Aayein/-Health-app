@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Assistant - Contact</title>
+  <style>
+    /* Reset and body */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden; /* prevent horizontal scroll */
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      background-color: rgba(0,0,0,0.4);
+      padding: 6px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+    .navbar img { height: 50px; margin-right: 12px; }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 12px;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    .navbar a:hover { background-color: #006666; }
+
+    /* Vanta container */
+    #vanta-bg {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
+    #vanta-bg > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section */
+    #contact-us{
+      width: auto;
+      max-width: 800px;
+      padding: 120px 20px 50px; /* top padding offset for fixed navbar */
+      margin: 0 auto;
+      text-align: center;
+      background-color: rgba(40,50,140,0.8);
+      color: #fff;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    #contact-us:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    #contact-us h1{
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+    #contact-us p{
+      font-size: 1.2rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-form, .contact-info {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      flex: 1 1 400px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+    .contact-form h2, .contact-info h2 {
+      margin-bottom: 20px;
+      color: #28328c;
+    }
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .contact-form button {
+      padding: 12px 25px;
+      background-color: #28328c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #1e257f;
+    }
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+        padding: 30px 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Vanta background container -->
+  <div id="vanta-bg">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div id="pic">
+        <img src="icon_wh_bg.png" alt="website logo">
+      </div>
+      <a href="form.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div id="contact-us">
+      <h1>Contact us</h1>
+      <p>Have questions about our products, support services, or anything else? Let us know and we’ll get back to you.</p>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>Send us a message</h2>
+        <form id="contactForm">
+          <input type="text"  id="fullName" placeholder="Full name" required>
+          <input type="email" placeholder="Email Address" required>
+          <input type="text" placeholder="Subject" required>
+          <textarea rows="6" placeholder="Your Message" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Address:</strong> 123 Health St, Wellness City, India</p>
+        <p><strong>Email:</strong> support@healthassistant.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Working Hours:</strong> Mon - Fri: 9:00 AM - 6:00 PM</p>
+      </div>
+    </section>
+
+    
+
+  <!-- Include Vanta.js and Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+
+  <!-- JavaScript: Vanta & Form -->
+  <script>
+    // Initialize Vanta Background
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      backgroundColor: 0x28328c, // dark blue
+      color: 0xffffff,
+      points: 15.00,
+      maxDistance: 20.00,
+      spacing: 15.00
+    });
+
+    // Handle form submission
+    const form = document.getElementById("contactForm");
+    const nameInput = document.getElementById("fullName");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent page reload
+
+       const name = nameInput.value;
+      alert(`Thanks, ${name} for visiting us! we will contact u soon`);
+
+      form.reset(); // clear form
+    });
+  </script>
+</body>
+</html>

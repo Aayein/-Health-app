@@ -1,0 +1,22 @@
+[
+  { "name": "Dr. Neha Sharma", "specialty": "General Physician", "hospital": "Fortis Hospital", "location": "Mumbai", "contact": "022-23456789" },
+  { "name": "Dr. Sameer Verma", "specialty": "General Physician", "hospital": "Bombay Hospital", "location": "Mumbai", "contact": "022-22067676" },
+  { "name": "Dr. Rajesh Menon", "specialty": "Neurologist", "hospital": "Lilavati Hospital", "location": "Mumbai", "contact": "022-24567890" },
+  { "name": "Dr. Anika Joshi", "specialty": "Neurologist", "hospital": "P. D. Hinduja Hospital", "location": "Mumbai", "contact": "022-24451515" },
+  { "name": "Dr. Aisha Patel", "specialty": "Dermatologist", "hospital": "Kokilaben Hospital", "location": "Mumbai", "contact": "022-27654321" },
+  { "name": "Dr. Rohan Gupte", "specialty": "Dermatologist", "hospital": "Breach Candy Hospital", "location": "Mumbai", "contact": "022-23671888" },
+  { "name": "Dr. Arjun Mehta", "specialty": "Cardiologist", "hospital": "Hinduja Hospital", "location": "Mumbai", "contact": "022-26712345" },
+  { "name": "Dr. Meera Singh", "specialty": "Cardiologist", "hospital": "Asian Heart Institute", "location": "Mumbai", "contact": "022-66986666" },
+  { "name": "Dr. Kavita Rao", "specialty": "ENT Specialist", "hospital": "Saifee Hospital", "location": "Mumbai", "contact": "022-29874561" },
+  { "name": "Dr. Vikram Pawar", "specialty": "ENT Specialist", "hospital": "Bhatia Hospital", "location": "Mumbai", "contact": "022-66660000" },
+  { "name": "Dr. Rohit Deshmukh", "specialty": "Pediatrician", "hospital": "Nanavati Hospital", "location": "Mumbai", "contact": "022-23581234" },
+  { "name": "Dr. Sunita Kulkarni", "specialty": "Pediatrician", "hospital": "Surya Hospital", "location": "Mumbai", "contact": "022-66919191" },
+  { "name": "Dr. Priya Iyer", "specialty": "Gastroenterologist", "hospital": "Jaslok Hospital", "location": "Mumbai", "contact": "022-25896314" },
+  { "name": "Dr. Amit Trivedi", "specialty": "Gastroenterologist", "hospital": "Global Hospital", "location": "Mumbai", "contact": "022-67670101" },
+  { "name": "Dr. Saurabh Jain", "specialty": "Orthopedic", "hospital": "Wockhardt Hospital", "location": "Mumbai", "contact": "022-21458963" },
+  { "name": "Dr. Pooja Chauhan", "specialty": "Orthopedic", "hospital": "Hiranandani Hospital", "location": "Mumbai", "contact": "022-25763300" },
+  { "name": "Dr. Sneha Rane", "specialty": "Psychiatrist", "hospital": "Global Hospital", "location": "Mumbai", "contact": "022-21459632" },
+  { "name": "Dr. Alok Kumar", "specialty": "Psychiatrist", "hospital": "Masina Hospital", "location": "Mumbai", "contact": "022-23714889" },
+  { "name": "Dr. Deepak Joshi", "specialty": "Ophthalmologist", "hospital": "Apollo Hospital", "location": "Mumbai", "contact": "022-25963412" },
+  { "name": "Dr. Divya Shah", "specialty": "Ophthalmologist", "hospital": "Lilavati Hospital", "location": "Mumbai", "contact": "022-26751000" }
+]

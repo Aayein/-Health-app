@@ -1,0 +1,20 @@
+[
+  {
+    "keyword": "headache",
+    "severity": "minor",
+    "remedy": "Drink plenty of water, rest in a dark room, and avoid screen time for a while.",
+    "bookingLink": "https://www.practo.com"
+  },
+  {
+    "keyword": "chest pain",
+    "severity": "major",
+    "remedy": "If severe or with shortness of breath, call emergency services immediately.",
+    "bookingLink": "https://www.practo.com"
+  },
+  {
+    "keyword": "fever",
+    "severity": "minor",
+    "remedy": "Stay hydrated, rest, and consider paracetamol as per dosage instructions.",
+    "bookingLink": "https://www.practo.com"
+  }
+]

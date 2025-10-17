@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Results</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow-y: auto;
+      height: auto;
+      display: block;
+      position: relative;
+      color: #222;
+    }
+
+    #vanta-bg {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content:flex-start;
+      align-items: center;
+      background-color:rgba(0, 0, 0, 0.4);
+      padding:6px 50px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      backdrop-filter: blur(6px);
+      height: 70px;
+    }
+
+    .navbar img {
+      height:60px;
+      width: 65px;
+      padding: 2px 20px 5px 2px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: background 0.3s;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background-color: #006666;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      position: sticky;  /* keeps the form visible while scrolling */
+      top: 50px;         /* distance from top */
+      margin: 0 auto;
+      text-align: left;
+      backdrop-filter: blur(5px);
+      z-index: 10;
+    }
+
+    h1 { text-align: center; margin-top: 0; }
+
+    #result {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      line-height: 1.6;
+      /* max-height: 35vh; */
+      /* overflow-y: auto; */
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 22px;
+      background-color: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      transform: scale(1.05);
+    }
+
+    #mainContainer {
+     display: flex;
+     flex-direction: column;
+     align-items: center; /* center card horizontally */
+     margin-top: 100px; /* offset from navbar */
+    }
+
+    #doctorSection {
+     margin-top: 30px;
+     width: 90%;
+     max-width: 1000px;
+     display: none;
+}
+
+    .doctor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .doctor-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .doctor-card h4 {
+      margin: 0;
+      color: #16a34a;
+    }
+
+    .doctor-card p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .doctor-card a {
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 8px;
+      background: #22c55e;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .doctor-card a:hover {
+      background: #16a34a;
+    }
+/* Feedback slide tab */
+#feedbackTab {
+  position: fixed;
+  top: 40%;
+  right: -243px; /* hidden by default */
+  width: 250px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-radius: 8px 0 0 8px;
+  transition: right 0.4s ease;
+  z-index: 9999;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* When opened */
+#feedbackTab.open {
+  right: 0;
+}
+
+/* Small triangle tab */
+#feedbackTabLabel {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  background: #0078d7;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Feedback form styling */
+#feedbackForm {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+#feedbackForm h3 {
+  margin-top: 0;
+  color: #0078d7;
+  text-align: center;
+}
+
+#feedbackForm label {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+#feedbackForm input,
+#feedbackForm textarea {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#feedbackForm button {
+  margin-top: 12px;
+  background: #0078d7;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#feedbackForm button:hover {
+  background: #005fa3;
+}
+
+  </style>
+</head>
+<body>
+  <div id="vanta-bg"></div>
+
+  <div class="navbar">
+    <div id="pic">
+      <img src="icon_wh_bg.png" alt="website logo">
+    </div>
+    <a href="form.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Parent container to center content -->
+  <div id="mainContainer">
+    <main class="card">
+      <h1>Health Check Result</h1>
+      <div id="result">Loading...</div>
+
+      <button id="consultDoctor">Consult a Doctor</button>
+      
+      <div id="doctorSection">
+        <h3>Available Doctors</h3>
+        <div class="doctor-grid" id="doctorGrid"></div>
+      </div>
+
+      <button id="goBack">Go Back</button>
+    </div>
+  </main>
+
+ <div id="feedbackTab">
+  <div id="feedbackTabLabel">Feedback</div>
+  <form id="feedbackForm">
+    <h3>Send us Feedback</h3>
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <label>Message:</label>
+    <textarea name="message" rows="4" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</div>
+  <!-- VANTA Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <script>
+    // 🌀 Animated background
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color:  0xffffff,
+      backgroundColor: 0x28328c,
+      points: 15.00,
+      maxDistance: 19.00,
+      spacing: 14.00
+    });
+
+    // 🧠 Show result
+    const resultDiv = document.getElementById("result");
+    const data = JSON.parse(sessionStorage.getItem("formData"));
+
+    if (data) {
+      fetch("/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(resp => {
+      let points = resp.recommendation.split(/\. |\n/).filter(p => p.trim() !== "");
+      let listItems = points.map(p => `<li>${p}</li>`).join("");
+
+      resultDiv.innerHTML = `
+       <h3>${resp.message}</h3>
+       <ul>${listItems}</ul>
+       <small>Source: ${resp.source}</small>
+      `;
+    })
+
+      .catch(() => {
+        resultDiv.innerHTML = "<p>Something went wrong. Please try again.</p>";
+      });
+    }
+
+    // 🏥 Fetch local doctors manually (from backend /doctors)
+    document.getElementById("consultDoctor").addEventListener("click", async () => {
+      const doctorSection = document.getElementById("doctorSection");
+      const doctorGrid = document.getElementById("doctorGrid");
+      doctorGrid.innerHTML = `<p>Loading doctors...</p>`;
+      doctorSection.style.display = "block";
+
+      try {
+        const symptom = data?.symptoms || "";
+        const res = await fetch(`/doctors?symptom=${encodeURIComponent(symptom)}`);
+        const docData = await res.json();
+
+        if (docData.doctors && docData.doctors.length > 0) {
+          doctorGrid.innerHTML = docData.doctors.map(d => `
+            <div class="doctor-card">
+              <h4>${d.name}</h4>
+              <p><strong>Specialty:</strong> ${d.specialty}</p>
+              <p><strong>Hospital:</strong> ${d.hospital}</p>
+              <p><strong>📞</strong> ${d.contact}</p>
+              <a href="booking.html?doctor=${encodeURIComponent(d.name)}">Book Appointment</a>
+            </div>
+          `).join("");
+        } else {
+          doctorGrid.innerHTML = `<p>No doctors found nearby. Try again later.</p>`;
+        }
+      } catch (err) {
+        console.error("Doctor fetch error:", err);
+        doctorGrid.innerHTML = `<p>Unable to load doctors right now.</p>`;
+      }
+    });
+
+    // 🔙 Back button
+    document.getElementById("goBack").addEventListener("click", () => {
+      window.location.href = "form.html";
+    });
+    const feedbackTab = document.getElementById("feedbackTab");
+    const feedbackLabel = document.getElementById("feedbackTabLabel");
+
+feedbackLabel.addEventListener("click", () => {
+  if (feedbackTab.style.right === "0px") {
+    feedbackTab.style.right = "-240px"; // hide
+  } else {
+    feedbackTab.style.right = "0px";    // show
+  }
+});
+
+// Optional: handle form submission
+document.getElementById("feedbackForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Thanks for your feedback!");
+  feedbackTab.style.right = "-180px"; // hide after submission
+});
+
+  </script>
+</body>
+</html>

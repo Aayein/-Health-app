@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Health Assistant</title>
+  <style>
+    /* Reset and body */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Lato', sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 6px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar img {
+      height: 50px;
+      margin-right: 12px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 12px;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background-color: #006666;
+    }
+
+    /* Vanta container */
+    #vanta-bg {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    #vanta-bg {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 120px 20px 50px;
+      /* top padding offset for navbar */
+      max-width: auto;
+      max-height: auto;
+      margin: 0 auto;
+      background-color: #fff;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #195ef3;
+
+
+    }
+
+    .hero-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: black;
+      font-weight: bolder;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: black;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    /* Content Section */
+    .content-section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      color: #333;
+    }
+
+    .content-section h2 {
+      color: #28328c;
+      margin-bottom: 20px;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+    }
+    .hero-section-1 {
+      text-align: center;
+      padding: 120px 20px 50px;
+      /* top padding offset for navbar */
+      max-width: auto;
+      max-height: auto;
+      margin: 0 auto;
+      background-color:transparent;
+    }
+
+     .hero-section-1 h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #84aafdeb;
+
+
+    }
+
+    .hero-section-1 h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: black;
+      font-weight: bolder;
+    }
+
+    .hero-section-1 p {
+      font-size: 1.2rem;
+      color: black;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Vanta background container -->
+  <div id="vanta-bg">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div id="pic">
+        <img src="icon_wh_bg.png" alt="website logo">
+      </div>
+      <a href="form.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Quality Healthcare Made Simple </h1>
+      <h2>Our mission</h2>
+      <p>Health-App is on a mission to make quality healthcare affordable and accessible for over a billion+ Indians. We
+        believe in empowering our users with the most accurate, comprehensive, and curated information and care,
+        enabling them to make better healthcare decisions.</p>
+    </section>
+
+    <!-- Content Section -->
+    <img src="about_html_image.png" alt="image_not_found">
+
+    <!-- Content Section -->
+    <!-- <img src="about_html_image_2.png" alt="image_not_found"> -->
+     <div class="hero-section-1">
+
+       <h1>we look for your health</h1>
+       <h1>so you can feel better</h1>
+       <p>we all come here for only a reason to live a good healthy life so for that we decided to create you a virtual
+         frind of your which help you in exploring your body more. </p>
+        </div>
+
+    <!-- Include Vanta.js and Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+
+    <!-- Initialize Vanta Background -->
+    <script>
+      VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        backgroundColor: 0x28328c,
+        color: 0xffffff,
+        points: 15.00,
+        maxDistance: 20.00,
+        spacing: 15.00
+      });
+    </script>
+</body>
+
+</html>
