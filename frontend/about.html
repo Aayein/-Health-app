@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Health Assistant</title>
   <style>
-    /* Reset and body */
+    
     html,
     body {
       margin: 0;
@@ -17,7 +17,7 @@
       font-family: 'Lato', sans-serif;
     }
 
-    /* Navbar */
+  
     .navbar {
       display: flex;
       align-items: center;
@@ -47,7 +47,6 @@
       background-color: #006666;
     }
 
-    /* Vanta container */
     #vanta-bg {
       position: relative;
       width: 100vw;
@@ -61,11 +60,10 @@
       z-index: 1;
     }
 
-    /* Hero Section */
+   
     .hero-section {
       text-align: center;
       padding: 120px 20px 50px;
-      /* top padding offset for navbar */
       max-width: auto;
       max-height: auto;
       margin: 0 auto;
@@ -93,7 +91,6 @@
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
-    /* Content Section */
     .content-section {
       max-width: 900px;
       margin: 50px auto;
@@ -113,7 +110,6 @@
 
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .hero-section h1 {
         font-size: 2.2rem;
@@ -126,7 +122,6 @@
     .hero-section-1 {
       text-align: center;
       padding: 120px 20px 50px;
-      /* top padding offset for navbar */
       max-width: auto;
       max-height: auto;
       margin: 0 auto;
@@ -158,9 +153,8 @@
 </head>
 
 <body>
-  <!-- Vanta background container -->
+
   <div id="vanta-bg">
-    <!-- Navbar -->
     <div class="navbar">
       <div id="pic">
         <img src="icon_wh_bg.png" alt="website logo">
@@ -170,7 +164,6 @@
       <a href="contact.html">Contact</a>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero-section">
       <h1>Quality Healthcare Made Simple </h1>
       <h2>Our mission</h2>
@@ -179,11 +172,8 @@
         enabling them to make better healthcare decisions.</p>
     </section>
 
-    <!-- Content Section -->
     <img src="about_html_image.png" alt="image_not_found">
 
-    <!-- Content Section -->
-    <!-- <img src="about_html_image_2.png" alt="image_not_found"> -->
      <div class="hero-section-1">
 
        <h1>we look for your health</h1>
@@ -192,11 +182,9 @@
          frind of your which help you in exploring your body more. </p>
         </div>
 
-    <!-- Include Vanta.js and Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
 
-    <!-- Initialize Vanta Background -->
     <script>
       VANTA.NET({
         el: "#vanta-bg",
